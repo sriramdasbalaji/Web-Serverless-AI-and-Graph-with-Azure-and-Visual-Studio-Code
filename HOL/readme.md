@@ -60,8 +60,6 @@ Clone the source repository from https://github.com/bradygmsft/Web-Serverless-AI
       ```
       Select all the text in the `.azcli` file, and then right click on the code , select **Run Line in Terminal** to run the code in the terminal. This will copy the code into the Cloud Shell terminal below and start creating the resources you'll need for the lab. 
 
-      ![](imagesGIF/AzureCli.gif)
-
 ### Configure the application
 
 Once the resources have been created, you need to configure the application using Visual Studio Code's Azure features. Replace the variables values in the files `.env` and `function\host.settings.json` according to the bash script output and by using the Storage extension in Visual Studio Code.
