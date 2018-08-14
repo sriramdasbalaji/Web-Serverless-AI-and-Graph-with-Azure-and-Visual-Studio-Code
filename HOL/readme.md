@@ -59,7 +59,9 @@ Clone the source repository from https://github.com/bradygmsft/Web-Serverless-AI
       export RegistryName=AzureAndVisualStudioCodeLab
       ```
       Select all the text in the `.azcli` file, and then right click on the code , select **Run Line in Terminal** to run the code in the terminal. This will copy the code into the Cloud Shell terminal below and start creating the resources you'll need for the lab. 
-
+   
+     ![](imagesGIF/AzureCLI.gif)
+   
 ### Configure the application
 
 Once the resources have been created, you need to configure the application using Visual Studio Code's Azure features. Replace the variables values in the files `.env` and `function\host.settings.json` according to the bash script output and by using the Storage extension in Visual Studio Code.
@@ -71,10 +73,9 @@ Once the resources have been created, you need to configure the application usin
 Now you are ready with the required azure resources and configuration files to proceed with this lab. In this exercise you will build and debug the application locally.
 
 1. Install npm dependencies for web and function app.
-
-
-    ![](imagesGIF/npminstall.gif)
-
+      
+      ![](imagesGIF/npmInstall.gif)
+      
 1. Click on the **Debug** icon in the Activity Bar on the side of VS Code. Select **Hybrid** configuration in the Debug configuration drop down. This will run both web app and function app locally.
     
      ![](imagesGIF/debuglocal.gif)
@@ -84,8 +85,8 @@ Now you are ready with the required azure resources and configuration files to p
      ![](imagesGIF/graph.gif)
 
 1. Open the browser and browse `http://localhost:3000` to access the webapp. Click on **Choose File** and select an image and click on **Upload**. (Download and keep a few images for this lab purpose)
-     
-      ![](imagesGIF/uploadimage1.gif)
+       
+      ![](imagesGIF/uploadImage1.gif)
 
    Now Execute the Graph again. This time you could see a graph data for the uploaded image.
 
@@ -107,11 +108,11 @@ Now you are ready with the required azure resources and configuration files to p
 
 1. Login to Azure Container Registry (ACR) from the terminal using `az acr login -n acrname -g resourcegroupname` command as shown below. 
 
-   ![](imagesGIF/acrlogin.gif)
+   ![](imagesGIF/acrLogin.gif)
 
 1. Now tag the web app image with `youracrname.azurecr.io/web` and push the image to ACR.
 
-   ![](imagesGIF/TagAndPush.gif)
+   ![](imagesGIF/TagandPush.gif)
 
    You can  find the pushed image under the Registries node in the DOCKER explorer as shown in image.
 
@@ -125,7 +126,7 @@ Now you are ready with the required azure resources and configuration files to p
 
 1. To verify the deployed application working fine, browse the website and start the `ImageReceivedTrigger` Function locally. Now upload another image from the website and verify the image analysis is updated to Graph.
 
-   ![](imagesGIF/verifythesite.gif)
+   ![](imagesGIF/verifyThesite.gif)
 
 
 In this exercise you built and deployed docker image to Azure App service.
@@ -140,7 +141,7 @@ In this exercise you will deploy ImageReceivedTrigger Java Script Function to Az
 
 1. Once the Function App is deployed successfully you can see the function under **Functions** node in Azure Explorer.
    
-   ![](imagesGIF/DeployedAzureFunction.gif)
+   ![](imagesGIF/deployedAzureFunction.gif)
 
 1. Now you need to update the Function app application settings with the values in `local.settings.json`. Right click on Application settings and select **Upload local settings**. Then select `local.settings.json` from the options.
 
@@ -148,7 +149,7 @@ In this exercise you will deploy ImageReceivedTrigger Java Script Function to Az
 
 1. Now let us enable log streaming for Function app to view the log activity.
 
-   ![](imagesGIF/LogStreaming.gif)
+   ![](imagesGIF/logStreaming.gif)
 
 1. Now you are completed with the deployment.You can verify both website and function working properly by uploading an image from you azure website.
       ![](imagesGIF/FinalVerify.gif)
