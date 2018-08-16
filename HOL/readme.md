@@ -1,15 +1,15 @@
 # Web-Serverless-AI-and-Graph-with-Azure-and-Visual-Studio-Code
 
 ## Overview
-In this lab we will see how easily we can configure and Deploy simple Image uploader  application with Computer vision AI and Cosmos Graph
+In this lab, we will see how easily we can configure and Deploy simple Image uploader  application with Computer vision AI and Cosmos Graph
 
 ## What’s covered in this lab?
 
-In this lab you will
+In this lab, you will
 
-1. Provision the required Azure Resources using **Azure CLI** includes Azure Container Registry, Cognitive Service, Storage account , Cosmos DB etc..
+1. Provision the required Azure Resources using **Azure CLI** includes Azure Container Registry, Cognitive Service, Storage account, Cosmos DB etc..
 
-1. Build the image of web app and Push to Azure ACR. Deploy the web image to Azure app service
+1. Build the image of the web app and Push to Azure ACR. Deploy the web image to Azure app service
 
 1. Deploy ImageReceivedTrigger function to Azure function App.
 
@@ -30,7 +30,7 @@ In this lab you will
 
 * **Microsoft Azure Account**: You will need a valid and active Azure account for the Azure labs. If you do not have one, you can sign up for a [free trial](https://azure.microsoft.com/en-us/free/){:target="_blank"}
 
-   * If you are a Visual Studio Active Subscriber, you are entitled for a $50-$150 credit per month. You can refer to this [link](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/) to find out more including how to activate and start using your monthly Azure credit.
+   * If you are a Visual Studio Active Subscriber, you are entitled to a $50-$150 credit per month. You can refer to this [link](https://azure.microsoft.com/en-us/pricing/member-offers/msdn-benefits-details/) to find out more including how to activate and start using your monthly Azure credit.
 
    * If you are not a Visual Studio Subscriber, you can sign up for the FREE [Visual Studio Dev Essentials](https://www.visualstudio.com/dev-essentials/)program to create **Azure free account** (includes 1 year of free services, $200 for 1st month).
 
@@ -43,7 +43,7 @@ Clone the source repository from https://github.com/bradygmsft/Web-Serverless-AI
 
 ### Provision the Azure Resources :
   
-  In this step you'll create all of the Azure resources required for this lab. This consists of Azure Container Registry, Cognitive Service, Storage account , Cosmos DB etc..
+  In this step, you'll create all of the Azure resources required for this lab. This consists of Azure Container Registry, Cognitive Service, Storage account, Cosmos DB etc..
 
   1. Log into Azure using Visual Studio Code's Sign In command. You'll see a prompt in Visual Studio Code for Device Authentication. Click the **Copy&Open** button and you'll be sent to a login site where you can paste in the login code and sign in.
 
@@ -64,19 +64,19 @@ Clone the source repository from https://github.com/bradygmsft/Web-Serverless-AI
    
 ### Configure the application
 
-Once the resources have been created, you need to configure the application using Visual Studio Code's Azure features. Replace the variables values in the files `.env` and `function\host.settings.json` according to the bash script output and by using the Storage extension in Visual Studio Code.
+Once the resources have been created, you need to configure the application using Visual Studio Code's Azure features. Replace the variables values in the files `.env` and `function\host.settings.json` according to the bash script output and by using the **Storage extension** (to get the storage account connection string) in Visual Studio Code.
 
    ![](imagesGIF/Configure.gif)
 
 ## Task 1: Build and debug the application locally
 
-Now you are ready with the required azure resources and configuration files to proceed with this lab. In this exercise you will build and debug the application locally.
+Now you are ready with the required Azure resources and configuration files to proceed with this lab. In this exercise, you will build and debug the application locally.
 
 1. Install npm dependencies for web and function app.
       
       ![](imagesGIF/npmInstall.gif)
       
-1. Click on the **Debug** icon in the Activity Bar on the side of VS Code. Select **Hybrid** configuration in the Debug configuration drop down. This will run both web app and function app locally.
+1. Click on the **Debug** icon in the Activity Bar on the side of VS Code. Select **Hybrid** configuration in the Debug configuration drop down. This will run both the web app and function app locally.
     
      ![](imagesGIF/debuglocal.gif)
 
@@ -84,25 +84,25 @@ Now you are ready with the required azure resources and configuration files to p
 
      ![](imagesGIF/graph.gif)
 
-1. Open the browser and browse `http://localhost:3000` to access the webapp. Click on **Choose File** and select an image and click on **Upload**. (Download and keep a few images for this lab purpose)
+1. Open the browser and browse `http://localhost:3000` to access the web app. Click on **Choose File** and select an image and click on **Upload**. (Download and keep a few images for this lab purpose)
        
       ![](imagesGIF/uploadImage1.gif)
 
    Now Execute the Graph again. This time you could see a graph data for the uploaded image.
 
-   > When you click on Upload, the image will be uploaded to Storage account and ImageReceivedTrigger function will be triggered. Cosmos DB Gremlin API get the image from the Storage account and Computer Vision Cognitive service (AI) perform an analysis on the image uploaded. The Computer Vision analysis will be saved to Cosmos DB graph with Tags and Captions.
+   > When you click on Upload, the image will be uploaded to Storage account and ImageReceivedTrigger function will be triggered. Cosmos DB Gremlin API gets the image from the Storage account and Computer Vision Cognitive service (AI) perform an analysis on the image uploaded. The Computer Vision analysis will be saved to Cosmos DB graph with Tags and Captions.
 
 ## Task 2: Add the docker support and Deploy the web app to Azure
 
- In this exercise you will add docker support for the web application, build and deploy the docker image to Azure App service.
+ In this exercise, you will add docker support for the web application, build and deploy the docker image to Azure App service.
 
- 1. Writing Docker and docker-compose files by hand can be tricky and time consuming. To help you, VS Code can generate the necessary Docker files for your project. From the Command Palette (Ctrl+Shift+P), run the `Docker: Add Docker files to Workspace` command to generate `Dockerfile, docker-compose.yml,` and `docker-compose.debug.yml` files for your workspace type:
+ 1. Writing Docker and docker-compose files by hand can be tricky and time-consuming. To help you, VS Code can generate the necessary Docker files for your project. From the Command Palette (Ctrl+Shift+P), run the `Docker: Add Docker files to Workspace` command to generate `Dockerfile, docker-compose.yml,` and `docker-compose.debug.yml` files for your workspace type:
 
      ![](imagesGIF/dockersupport.gif)
 
      Once the Docker files are generated open the `docker-compose.yml` file and change the ports section from `3000:3000` to `80:3000`.
 
-1. Now run the `Docker: Compose Up` command from the Command Palette (Ctrl+Shift+P). This command builds and create an image for web app with the tag `web:latest`
+1. Now run the `Docker: Compose Up` command from the Command Palette (Ctrl+Shift+P). This command builds and creates an image for web app with the tag `web: latest`
 
      ![](imagesGIF/buildImage.gif)
 
@@ -114,7 +114,7 @@ Now you are ready with the required azure resources and configuration files to p
 
    ![](imagesGIF/TagandPush.gif)
 
-   You can  find the pushed image under the Registries node in the DOCKER explorer as shown in image.
+   You can find the pushed image under the Registries node in the DOCKER explorer as shown in the image.
 
 1. With the Docker Explorer, you can deploy images from  Azure Container Registries, directly to an Azure App Service instance. You can now right click on the image in Azure Container Registry and choose **Deploy Image to Azure App Service**. From here, you will be prompted for an Azure Resource Group, a location, an App Service Plan, and a globally unique website name.
 
@@ -129,13 +129,13 @@ Now you are ready with the required azure resources and configuration files to p
    ![](imagesGIF/verifyThesite.gif)
 
 
-In this exercise you built and deployed docker image to Azure App service.
+In this exercise, you built and deployed docker image to Azure App service.
 
 ## Task 3: Deploy Function to Azure Function app
 
-In this exercise you will deploy ImageReceivedTrigger Java Script Function to Azure Function App.
+In this exercise, you will deploy ImageReceivedTrigger Java Script Function to Azure Function App.
 
-1. Right click on the function folder and select **Deploy to Function App**. You will be prompted for Function name, an unique Function App name and storage account.
+1. Right click on the function folder and select **Deploy to Function App**. You will be prompted for Function name, a unique Function App name, and storage account.
 
    ![](imagesGIF/DeployAzureFunction.gif)
 
@@ -151,7 +151,7 @@ In this exercise you will deploy ImageReceivedTrigger Java Script Function to Az
 
    ![](imagesGIF/logStreaming.gif)
 
-1. Now you are completed with the deployment.You can verify both website and function working properly by uploading an image from you azure website.
+1. Now you have completed the deployment. You can verify both website and function working properly by uploading an image from you azure website.
       ![](imagesGIF/FinalVerify.gif)
 
-   Congratulations! You have completed this lab. In this lab you deployed a simple image uploader web app and an azure function which triggers the cognitive service when an image uploaded to storage account. And Congnitive service analysis will be stored to Cosmos Db graph.
+   Congratulations! You have completed this lab. In this lab, you deployed a simple image uploader web app and an azure function which triggers the cognitive service when an image uploaded to the storage account. And Cognitive service analysis will be stored in the Cosmos Db graph.
